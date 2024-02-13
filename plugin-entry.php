@@ -17,7 +17,8 @@ define('FORMBUILDER_VERSION', '1.0.5');
 // This will automatically update, when you run dev or production
 define('FORMBUILDER_DEVELOPMENT', 'yes');
 
-class formBuilder {
+class formBuilder
+{
     public function boot()
     {
         $this->loadClasses();
@@ -39,7 +40,7 @@ class formBuilder {
             if (!current_user_can('manage_options')) {
                 return;
             }
-            global $submenu;
+            // global $submenu;
             add_menu_page(
                 'formBuilder',
                 'Form Builder',
@@ -49,16 +50,16 @@ class formBuilder {
                 'dashicons-editor-code',
                 25
             );
-            $submenu['form-builder.php']['dashboard'] = array(
-                'Dashboard',
-                'manage_options',
-                'admin.php?page=form-builder.php#/',
-            );
-            $submenu['form-builder.php']['contact'] = array(
-                'Contact',
-                'manage_options',
-                'admin.php?page=form-builder.php#/contact',
-            );
+            // $submenu['form-builder.php']['dashboard'] = array(
+            //     'Dashboard',
+            //     'manage_options',
+            //     'admin.php?page=form-builder.php#/',
+            // );
+            // $submenu['form-builder.php']['new'] = array(
+            //     'New',
+            //     'manage_options',
+            //     'admin.php?page=form-builder.php#/new',
+            // );
         });
     }
 
@@ -76,40 +77,37 @@ class formBuilder {
         $loadAssets = new \formBuilder\Classes\LoadAssets();
         $loadAssets->admin();
 
-        $translatable = apply_filters('formbuilder/frontend_translatable_strings', array(
-            'hello' => __('Hello', 'form-builder'),
-        ));
+        $translatable = apply_filters(
+            'formbuilder/frontend_translatable_strings',
+            array(
+                'hello' => __('Hello', 'form-builder'),
+            )
+        );
 
-        $formbuilder = apply_filters('formbuilder/admin_app_vars', array(
-            'assets_url' => FORMBUILDER_URL . 'assets/',
-            'ajaxurl' => admin_url('admin-ajax.php'),
-            'i18n' => $translatable
-        ));
+        $formbuilder = apply_filters(
+            'formbuilder/admin_app_vars',
+            array(
+                'assets_url' => FORMBUILDER_URL . 'assets/',
+                'ajaxurl' => admin_url('admin-ajax.php'),
+                'i18n' => $translatable
+            )
+        );
 
         wp_localize_script('formbuilder-script-boot', 'formbuilderAdmin', $formbuilder);
 
         echo '<div class="formbuilder-admin-page" id="formbuilder_app">
-            <div class="main-menu text-white-200 bg-wheat-600 p-4">
-                <router-link to="/">
-                    Home
-                </router-link> |
-                <router-link to="/contact" >
-                    Contacts
-                </router-link>
-            </div>
-            <hr/>
             <router-view></router-view>
         </div>';
     }
 
     /*
-    * NB: text-domain should match exact same as plugin directory name (Plugin Name)
-    * WordPress plugin convention: if plugin name is "My Plugin", then text-domain should be "my-plugin"
-    * 
-    * For PHP you can use __() or _e() function to translate text like this __('My Text', 'form-builder')
-    * For Vue you can use $t('My Text') to translate text, You must have to localize "My Text" in PHP first
-    * Check example in "renderAdminPage" function, how to localize text for Vue in i18n array
-    */
+     * NB: text-domain should match exact same as plugin directory name (Plugin Name)
+     * WordPress plugin convention: if plugin name is "My Plugin", then text-domain should be "my-plugin"
+     * 
+     * For PHP you can use __() or _e() function to translate text like this __('My Text', 'form-builder')
+     * For Vue you can use $t('My Text') to translate text, You must have to localize "My Text" in PHP first
+     * Check example in "renderAdminPage" function, how to localize text for Vue in i18n array
+     */
     public function loadTextDomain()
     {
         load_plugin_textdomain('form-builder', false, basename(dirname(__FILE__)) . '/languages');
