@@ -1,6 +1,6 @@
 import routes from './routes';
 import { createWebHashHistory, createRouter } from 'vue-router'
-import PluginClassName from './Bits/AppMixins';
+import formBuilder from './Bits/AppMixins';
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -8,17 +8,17 @@ const router = createRouter({
 });
 
 
-const framework = new PluginClassName();
+const framework = new formBuilder();
 
-framework.app.config.globalProperties.appVars = window.PluginClassNameAdmin;
+framework.app.config.globalProperties.appVars = window.formBuilderAdmin;
 
-window.PluginClassNameApp = framework.app.use(router).mount('#pluginlowercase_app');
+window.formBuilderApp = framework.app.use(router).mount('#formbuilder_app');
 
 router.afterEach((to, from) => {
-    jQuery('.pluginlowercase_menu_item').removeClass('active');
+    jQuery('.formbuilder_menu_item').removeClass('active');
     let active = to.meta.active;
     if(active) {
-        jQuery('.pluginlowercase_main-menu-items').find('li[data-key='+active+']').addClass('active');
+        jQuery('.formbuilder_main-menu-items').find('li[data-key='+active+']').addClass('active');
     }
 });
 

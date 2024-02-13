@@ -3,14 +3,14 @@
 /**
  * Autoloader
  *
- * @package PluginClassName
+ * @package formBuilder
  */
 
 if (!defined('ABSPATH')) {
     exit;
 }
 include 'global_functions.php';
-if (!function_exists('PluginClassNameAutoload')) {
+if (!function_exists('formBuilderAutoload')) {
     /**
      * Plugin autoloader.
      *
@@ -22,10 +22,10 @@ if (!function_exists('PluginClassNameAutoload')) {
      *
      * @param $class
      */
-    function PluginClassNameAutoload($class)
+    function formBuilderAutoload($class)
     {
         // Do not load unless in plugin domain.
-        $namespace = 'PluginClassName';
+        $namespace = 'formBuilder';
         if (strpos($class, $namespace) !== 0) {
             return;
         }
@@ -45,5 +45,5 @@ if (!function_exists('PluginClassNameAutoload')) {
         }
     }
     // Register the autoloader.
-    spl_autoload_register('PluginClassNameAutoload');
+    spl_autoload_register('formBuilderAutoload');
 }
