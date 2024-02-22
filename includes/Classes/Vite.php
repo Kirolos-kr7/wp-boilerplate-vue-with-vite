@@ -97,7 +97,7 @@ class Vite
             return;
         }
 
-        $manifestPath = realpath(__DIR__) . '/../../assets/manifest.json';
+        $manifestPath = realpath(__DIR__) . '/../../assets/.vite/manifest.json';
         if (!file_exists($manifestPath)) {
             throw new Exception('Vite Manifest Not Found. Run : npm run dev or npm run prod');
         }

@@ -10,15 +10,22 @@
     },
     "main": "index.js",
     "dependencies": {
+        "@vuelidate/core": "^2.0.3",
+        "@vuelidate/validators": "^2.0.4",
         "@wordpress/hooks": "^3.51.0",
         "autoprefixer": "^10",
         "chart.js": "4.4.1",
         "element-plus": "^2.5.5",
+        "lucide-vue-next": "^0.330.0",
         "moment": "^2.30.1",
+        "pinia": "^2.1.7",
         "tailwindcss": "^3",
         "vite-plugin-live-reload": "^3.0.3",
         "vue": "^3.4.19",
-        "vue-router": "^4.2.5"
+        "vue-router": "^4.2.5",
+        "vue3-grid-layout-next": "^1.0.6",
+        "vue3-smooth-dnd": "^0.0.6",
+        "vuedraggable": "^4.1.0"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.23.9",
@@ -33,6 +40,7 @@
         "postcss": "^8.4.35",
         "resolve-url-loader": "^5.0.0",
         "rollup-plugin-copy": "^3.5.0",
+        "rollup-plugin-typescript2": "^0.36.0",
         "sass": "^1.70.0",
         "sass-loader": "^14",
         "typescript": "^5.3.3",

@@ -1,12 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import Navbar from './Navbar.vue'
 </script>
 
 <template>
-  <div>
-    <Navbar />
-    <div class="p-3 sm:p-5">
-      <RouterView />
-    </div>
+  <Navbar />
+
+  <div class="px-3 sm:px-5 py-4">
+    <RouterView />
   </div>
 </template>

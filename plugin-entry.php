@@ -15,7 +15,7 @@ define('FORMBUILDER_DIR', plugin_dir_path(__FILE__));
 define('FORMBUILDER_VERSION', '1.0.5');
 
 // This will automatically update, when you run dev or production
-define('FORMBUILDER_DEVELOPMENT', 'yes');
+define('FORMBUILDER_PRODUCTION', 'yes');
 
 class formBuilder
 {
@@ -150,7 +150,13 @@ class formBuilder
      */
     public function registerShortCodes()
     {
-        // Use add_shortcode('shortcode_name', 'function_name') to register shortcode
+        function get_form($attrs) {
+            $form_id = $attrs['id'];
+            
+            return 'Form Id:' . $form_id;
+        }
+        
+        add_shortcode('form_builder', 'get_form');
     }
 }
 

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,6 +12,68 @@
   @apply -ml-2 md:-ml-5;
 }
 
+#wpbody-content {
+  @apply pb-0;
+  font-family: 'Space Grotesk';
+}
+
 li {
   @apply mb-0;
+}
+
+label {
+  @apply text-sm mb-1.5 block;
+}
+
+input {
+  @apply focus-within:ring-1 ring-indigo-600 focus-within:outline-none;
+}
+
+input,
+textarea,
+select {
+  @apply !border !border-gray-300 !text-sm !rounded-lg focus-within:!ring-1 !block !w-full !px-3 !py-2;
+}
+
+label:has(+ input:required) {
+  position: relative;
+}
+
+label:has(+ input:required)::after {
+  content: '*';
+  color: red;
+  position: absolute;
+  top: 0;
+  margin-left: 5px;
+}
+
+.select-icon {
+  @apply appearance-none bg-no-repeat pr-7;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-size: 1.1em;
+}
+
+.text-password {
+  -webkit-text-security: disc;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide-left-enter-from,
+.slide-left-leave-to {
+  transform: translateX(-200%);
 }

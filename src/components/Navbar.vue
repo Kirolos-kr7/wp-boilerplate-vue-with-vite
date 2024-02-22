@@ -1,7 +1,5 @@
-<script setup></script>
-
 <template>
-  <header>
+  <header class="sticky top-8 z-50">
     <nav
       class="flex items-center justify-between px-3 sm:px-5 py-4 gap-5 bg-white shadow-sm"
     >
